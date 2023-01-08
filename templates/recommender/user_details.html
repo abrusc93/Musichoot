@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %} User Details {% endblock %}
+
+{% block content %}
+<style>
+    .left{
+        position: relative;
+        alignment: left;
+        text-align: left;
+    }
+</style>
+<div class="container container-fluid">
+    <form method='post' action="/recommender/bestuserp/">
+        {% csrf_token %}
+        <br>
+        <section class="jumbotron text-center bg-white">
+            <center>
+                <h2>{{ searchuser.username }} </h2>
+                <img class="avatar" src="{{ searchuser.profile.avatar.url }}">
+            </center>
+            <br>
+            <div>
+
+            </div>
+            <br>
+
+        </form>
+        <br>
+
+        {% if user %}
+        <table class="table">
+        <tbody>
+        <tr>
+            <h3>{{ searchuser.first_name }} {{ searchuser.last_name }}</h3>
+            <br/>
+            <p class="left text-muted">Bio: &emsp; {{ searchuser.profile.bio }}</p>
+            <br/>
+            <h3 class="left">Playlists: </h3>
+            <br/>
+                {% for playlist, songs, fav in playlists %}
+                    {% if playlist.is_public %}
+                <div class="d-inline-flex p-2 ">
+                    <h2 class="">{{ playlist.title }}</h2>
+                    <span class=" pl-5 ml-5" id="like_count">
+                        <h2>{{ playlist.like_count }}</h2></span>
+                    {% if request.user.is_authenticated %}
+                        {% if fav %}
+                            <a href="/recommender/playlistlikes/{{ playlist.id }}/F" class="text-decoration-none pt-2 pl-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                </svg>
+                            </a>
+                        {% else %}
+                            <a href="/recommender/playlistlikes/{{ playlist.id }}/T" class="text-decoration-none pt-2 pl-1 ">
+                                <svg width="28" height="28" viewBox="0 0 16 16" class="bi bi-heart" fill="red" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                </svg>
+                            </a>
+                        {% endif %}
+                    {% else %}
+                    <a href="{% url 'login' %}" class="text-decoration-none pt-2 pl-1">
+                        <svg width="28" height="28" viewBox="0 0 16 16" class="bi bi-heart" fill="red" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                    </a>
+                    {% endif %}
+                </div>
+                <br>
+                <table class="table">
+                <tbody>
+                <tr>
+                    {% for song in songs %}
+                        <td>
+                            <center>
+                            <iframe src="https://open.spotify.com/embed/track/{{ song.id }}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                            <br>
+                            <a href="/recommender/playlistdelete/{{ playlist.id }}/{{ song.id }}">
+                            </a>
+                            </center>
+                        </td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+                </table>
+                <br>
+                <br>
+                <br>
+                    {% endif %}
+                {% endfor %}
+            <br/>
+            <br/>
+            {% if request.user.is_authenticated %}
+            <a class="btn btn-primary text-decoration-none m-5" href="/account/sentrequest/{{ searchuser.username }}">Send Friend Request</a>
+            {% else %}
+            <a class="btn btn-primary text-decoration-none m-5" href="{% url 'login' %}">Send Friend Request</a>
+            {% endif %}
+        </tr>
+        </tbody>
+        </table>
+
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

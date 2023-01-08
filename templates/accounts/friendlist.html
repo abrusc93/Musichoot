@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Friend List{% endblock %}
+{% block content %}
+<div>
+    <section>
+        <div>
+            <h1>Current Friends</h1>
+            {% if friends %}
+            <table class="table">
+            <tbody>
+            <tr>
+            {% for friend in friends %}
+                    <td>
+                        <center>
+                        <br>
+                            <a href="/recommender/bestuserp/{{ friend }}">{{ friend }} </a><br/>
+                            <img class="avatar" src="{{ friend.profile.avatar.url }}">
+                        </center>
+                    </td>
+            {% endfor %}
+            </tr>
+            </tbody>
+            </table>
+            {% endif %}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h1>Sent Friend Request To:</h1>
+            {% if friendrequest %}
+            <table class="table">
+            <tbody>
+            <tr>
+            {% for friend in friendrequest %}
+                    <td>
+                        <center>
+                        <br>
+                            <a href="/recommender/bestuserp/{{ friend }}">{{ friend.receiver }} </a>
+                            <br/>
+                            <br/>
+                            <a class="btn btn-primary text-decoration-none" href="/account/cancel/{{friend.receiver}}">Cancel</a>
+                        </center>
+                    </td>
+            {% endfor %}
+            </tr>
+            </tbody>
+            </table>
+            {% endif %}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h1>Recieved Friend Request From:</h1>
+            {% if recfriendrequest %}
+            <table class="table">
+            <tbody>
+            <tr>
+            {% for friend in recfriendrequest %}
+                    <td>
+                        <center>
+                        <br>
+                            <a href="/recommender/bestuserp/{{ friend }}">{{ friend }} </a>
+                            <br/>
+                            <br/>
+                            <a class="btn btn-primary text-decoration-none" href="/account/accept/{{friend}}">Accept</a>
+                            <a class="btn btn-primary text-decoration-none ml-3" href="/account/decline/{{ friend }}">Decline</a>
+                       </center>
+                    </td>
+            {% endfor %}
+            </tr>
+            </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </section>
+</div>
+{% endblock %}

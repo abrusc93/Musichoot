@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %} MusicHoot.About {% endblock %}
+
+{% block content %}
+
+    {% load crispy_forms_tags %}
+    <html>
+        <head>
+            <title>The Project</title>
+        </head>
+        <body>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="/recommender/about">The Project</a>
+                <a class="navbar-brand" href="/recommender/team">Our Team</a>
+            </nav>
+            <div class="container-fluid bg-light text-dark">
+                <h1><b>The Project</b></h1>
+                <br/>
+                <p>This website is a Capstone Project for Computer Science students at Rowan University.
+                    We were tasked with creating a social music website, which resulted in MusicHoot.
+                    MusicHoot is a social networking application that connects people who share common music interests.
+                    Users will use our application to make new friends who listen to similar music and find suggestions for new music that they might be interested in.
+                </p>
+                <br/>
+                <br/>
+                <h2><b>Project Goals</b></h2>
+                <br/>
+                <div>
+                    <ul>
+                        <li>Use publicly available resources</li>
+                        <li>Website that allows users to listen to 30 sec clips of music</li>
+                        <li>Allows users to make a free account and login</li>
+                        <li>Permit login free browsing before registering</li>
+                        <li>The site should provide recommendations for new music to listen to based on inferred preferences</li>
+                        <li>Allows users to search for music and create playlists that can be shared</li>
+                        <li>Allows users to to see what friends are listening to</li>
+                        <li>The website must be made using the Django Framework</li>
+                        <li>The Website should be functional on the Chrome Browser</li>
+                    </ul>
+                </div>
+                <br/>
+                <br/>
+                <h2><b>Project Features</b></h2>
+                <br/>
+                <div>
+                    <ul>
+                        <li><b>Web Based:</b> Music Hoot will be available as a web application with both a front-end and a back-end on Django.</li>
+                        <li><b>Login:</b> Will have a login page with fields for a username, password, and email.</li>
+                        <li><b>Listen To Music:</b> Users will be able to listen to 30 seconds clips of songs from Spotify.</li>
+                        <li><b>Recommendations:</b> Users will be able to view recommendations for new music based on previously listened to tracks.</li>
+                        <li><b>Search Music:</b> Users will be able to search for songs to listen to.</li>
+                        <li><b>Music Playlists:</b> Users will be able to create playlists from listening to songs.</li>
+                        <li><b>Friends:</b> Users will be able to make and add friends.</li>
+                        <li><b>Shared Playlists:</b> Users will be able to create sharing permissions for playlists. These permissions include Public which allow anybody to find your playlist. Friends which only allow your friends to find your playlist. Restricted which restricts your playlist viewers to certain people who are invited by the playlist creator.</li>
+                        <li><b>User Profiles:</b> Users will be able to customize their own profiles to display favored songs and playlists. Users will also be able to change privacy settings to show and or hide playlists and liked songs. Users will be able to upvote/downvote tracks and playlists.</li>
+                    </ul>
+                </div>
+                <br/>
+                <br/>
+                <h2><b>Resources Used</b></h2>
+                <br/>
+                <div>
+                    <ul>
+                        <li>Django Framework</li>
+                        <li>Api(Spotipy)</li>
+                        <li>Github</li>
+                        <li>Slack</li>
+                        <li>Trello</li>
+                        <li>SQLite</li>
+                        <li>Amazon Web Services</li>
+                    </ul>
+                </div>
+                <br/>
+                <br/>
+                <h2><a href="https://github.com/Senior-Project-Section-3-Team-4" target="_blank">Check out the Github(Its Probably Private)</a></h2>
+            </div>
+        </body>
+    </html>
+
+{% endblock %}

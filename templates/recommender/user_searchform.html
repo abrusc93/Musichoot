@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} User Search {% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-light text-dark">
+<form method='post' action="/recommender/bestuserp/">
+    {% csrf_token %}
+    <br>
+    <center>
+        <h2>User Search</h2>
+    </center>
+    <br>
+    <div>
+        Username: {{ form.username }}
+    </div>
+    <br>
+    <button class="btn btn-primary btn-lg" type="submit">Search</button>
+
+</form>
+<br>
+
+{% if users %}
+<table class="table">
+<tbody>
+<tr>
+
+
+{% for user in users%}
+
+
+    <td>
+        <center>
+        <br>
+            <a href="/recommender/bestuserp/{{ user.username }}">{{ user.username }} </a><br/>
+        </center>
+    </td>
+{% endfor %}
+
+</tr>
+</tbody>
+</table>
+
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+</div>
+
+{% endblock %}

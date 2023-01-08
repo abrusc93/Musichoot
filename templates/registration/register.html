@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Log-in{% endblock %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<script>
+    window.location.href = '{% url "accounts:profile" %}';
+</script>
+{% endif %}
+
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-6 bg-light text-dark">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-12 mx-auto">
+
+                            <form class="account-form p-4 rounded col-lg-10 mx-auto" action="." method="post">
+                                {% csrf_token %}
+                                <p class="h4 mb-4 font-weight-bold">Create an account</p>
+
+                                {% if form.errors %}
+                                <p>Please correct the following errors:</p>
+                                {% for field in form %}
+                                {% if field.errors %}
+                                <div class="alert alert-primary" role="alert">
+                                    {{ field.label }}: {{ field.errors|striptags }}
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+
+                                <label class="small font-weight-bold">{{ form.username.label }}<span class="text-muted">
+                                        (Required)</span></label>
+                                {{ form.username }}
+                                <label class="small font-weight-bold">{{ form.email.label}}<span class="text-muted">
+                                        (Required)</span></label>
+                                {{ form.email }}
+                                <label class="small font-weight-bold">{{ form.password.label}}<span class="text-muted">
+                                        (Required)</span></label>
+                                {{ form.password }}
+                                <small class="form-text text-dark mb-4">
+                                    At least 8 characters and 1 digit
+                                </small>
+                                <label class="small font-weight-bold">{{ form.password2 }}<span class="text-muted"></span></label>
+                                <small class="form-text text-dark mb-4">
+                                    Repeat password
+                                </small>
+
+                                <button class="btn btn-dark btn-block py-2 mb-4 mt-5 font-weight-bold"
+                                    type="submit">Register</button>
+
+                            </form>
+
+                            <p class="small text-center pt-4">
+                                <a href="{% url "accounts:login" %}">Already have an account?</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

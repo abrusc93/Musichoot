@@ -1,0 +1,507 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} MusicHoot.Home {% endblock %}
+
+{% block content %}       
+
+{% load crispy_forms_tags %} 
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Musichoot</title>
+        <style>
+            h1{
+                text-align: center;
+                color: #40a2c0;
+            }
+            /*.card{*/
+            /*    margin:1rem;*/
+            /*    perspective: 1000px;*/
+            /*}*/
+            /*.cards-section{*/
+            /*    display: flex;*/
+            /*    flex-wrap: wrap;*/
+            /*    justify-content: center;*/
+            /*}*/
+            /*.card-container{*/
+            /*    display: grid;*/
+            /*    grid-template-columns: 1fr;*/
+            /*    justify-content: center;*/
+
+            /*    transition: all 1s ease;*/
+            /*    transform-style: preserve-3d;*/
+            /*}*/
+            /*.card-front{*/
+            /*    grid-area: 1 / 1;*/
+            /*    transform: rotateY(180deg);*/
+            /*}*/
+            /*.card-back{*/
+            /*    grid-area: 1 / 1;*/
+            /*    background-color: #4ac1f7;*/
+            /*}*/
+            /*.card-container img{*/
+            /*    width: 15rem;*/
+            /*}*/
+            /*.card:hover .card-container{*/
+            /*    transform:rotateY(180deg);*/
+            /*}*/
+
+            * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #165880;
+}
+section {
+  height: 100vh;
+  display: flex;
+  padding: 0 4em;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.container {
+  perspective: 1000px;
+  height: 28vh;
+  width: 100%;
+  cursor: pointer;
+}
+.card {
+  transform-style: preserve-3d;
+  height: 100%;
+  width: 100%;
+  transition: 0.5s ease;
+}
+.front,
+.back {
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 0.4em;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+}
+.front {
+  /*background: linear-gradient(to right, #a246ef, #6523fe);*/
+    background: #96b9ce;
+}
+.front img {
+  width: 5em;
+}
+.content {
+  transform: translateZ(60px);
+}
+.content h3 {
+  font-size: 22px;
+  margin-top: 1em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.content p {
+  font-size: 14px;
+  line-height: 2em;
+  letter-spacing: 0.02em;
+  padding: 0 3em;
+}
+.back {
+  background-color: rgba(99, 154, 153, 0.91);
+  transform: rotateX(180deg);
+}
+.container:hover .card {
+  transform: rotateX(180deg);
+}
+@media screen and (min-width: 3000px) {
+  section {
+    padding: 0 1em;
+  }
+  .container {
+    flex-basis: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 1.5em;
+  }
+}
+        </style>
+    </head>
+    <body>
+        <h1>
+            Welcome to Musichoot
+        </h1>
+
+        <h3 style="text-align: center">Today's Top 10 Hits</h3>
+
+
+        <div class="owl-carousel owl-theme">
+    <div class="item">
+        <img src="{% static '/Harry-Styles.png'%}">
+    </div>
+    <div class="item">
+        <img src="{% static '/First-Class.jpg'%}">
+    </div>
+     <div class="item">
+        <img src="{% static '/honest.jpeg'%}">
+    </div>
+     <div class="item">
+        <img src="{% static '/bam-bam.jpg'%}">
+    </div>
+     <div class="item">
+        <img src="{% static '/heat-waves.jpeg'%}">
+    </div>
+     <div class="item">
+        <img src="{% static '/thats-want.jpeg'%}">
+    </div>
+   <div class="item">
+        <img src="{% static '/middle-night.jpg'%}">
+    </div>
+    <div class="item">
+        <img src="{% static '/thousand-miles.jpg'%}">
+    </div>
+   <div class="item">
+        <img src="{% static '/ghost.jpeg'%}">
+    </div>
+     <div class="item">
+        <img src="{% static '/doja-cat.jpg'%}">
+    </div>
+</div>
+        <h2 style="text-align: center"><u>Top 3 songs of the week</u></h2>
+<section>
+      <div class="container">
+        <div class="card">
+          <div class="front">
+            <div class="content">
+              <img src="{% static '/stay.jpg'%}" />
+              <h3>STAY</h3>
+            </div>
+          </div>
+          <div class="back">
+            <div class="content">
+              <h3>
+                STAY
+              </h3>
+            <center><hr width="50%"></center>
+                <p>Artist: The Kid Laroi & Justin Bieber</p>
+                <p>Genre: Rap / Hip-Hop</p>
+                <p>Released: 2022</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container">
+        <div class="card">
+          <div class="front">
+            <div class="content">
+              <img src="{% static '/cold-heart.jpg'%}" />
+              <h3>COLD HEART</h3>
+            </div>
+          </div>
+          <div class="back">
+            <div class="content">
+              <h3>
+                COLD HEART
+              </h3>
+<center><hr width="65%"></center>
+                <p>Artist: Elton John & Dua Lipa</p>
+                <p>Genre: Pop, R&B/Soul</p>
+                <p>Released: 2022</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="card">
+          <div class="front">
+            <div class="content">
+              <img src="{% static '/fu.jpg'%}"/>
+              <h3>ABCDEFU</h3>
+            </div>
+          </div>
+          <div class="back">
+            <div class="content">
+              <h3>
+                ABCDEFU
+              </h3>
+                <center><hr width="70%"></center>
+
+                <p>Artist: GAYLE</p>
+                <p>Genre: Pop, R&B/Soul</p>
+                <p>Released: 2022</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+                integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+                crossOrigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+        <script type="text/javascript">
+            $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+        </script>
+    </body>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+<center>
+    <h2>Musichoot's Recent Users</h2>
+</center>
+{% if users %}
+<table class="table">
+<tbody>
+<tr>
+{% for user in users%}
+    <td>
+        <center>
+        <br>
+            <a href="/recommender/bestuserp/{{ user.username }}">{{ user.username }} </a><br/>
+            <img class="avatar" src="{{ user.profile.avatar.url }}">
+        </center>
+    </td>
+{% endfor %}
+</tr>
+</tbody>
+</table>
+
+{% endif %}
+    <br>
+    <br>
+    <br>
+
+<center>
+    <h2>Musichoot's Most Liked Songs</h2>
+</center>
+
+{% if most_liked %}
+<table class="table">
+<tbody>
+<tr>
+    {% if request.user.is_authenticated %}
+    {% for album, fav in albums %}
+    <td>
+        <iframe src="https://open.spotify.com/embed/track/{{ album.id }}" width="300" height="380"
+        frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <br/>
+        <center>
+            <span class="text-white" id="like_count2">{{ album.like_count }}</span>
+            <div class="d-inline-flex">
+            {% if fav %}
+                <a href="/recommender/likes/{{ album.id }}/F" class="pt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                </a>
+            {% else %}
+                <a href="/recommender/likes/{{ album.id }}/T" class="pt-2">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-heart" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                </a>
+            {% endif %}
+                <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-light pl-5" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <h5 class="text-center"> Select Playlist </h5>
+                        <div class="dropdown-divider"></div>
+                        {% for playlist in userplaylists %}
+                            <a class="dropdown-item text-decoration-none" href="/recommender/playlist/{{ playlist.id }}/{{ album.id }}">{{ playlist.title }}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                        <form method='post' action="/recommender/playlistaddb/{{ album.id }}/">
+                            {% csrf_token %}
+                            <div class="input-group mb-1 p-1">
+                                {{ form2.name }}
+                              <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="submit">Add New</button>
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+            </div>
+        </center>
+
+    {% endfor %}
+    {% else %}
+    {% for song in most_liked %}
+    <td>
+        <iframe src="https://open.spotify.com/embed/track/{{ song.id }}" width="300" height="380"
+        frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <br/>
+        <center>
+            <span class="text-white" id="like_count1">{{ song.like_count }}</span>
+            <a href="{% url 'login' %}" class="">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-heart" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg>
+            </a>
+        </center>
+
+    {% endfor %}
+    {% endif %}
+</tr>
+</tbody>
+</table>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<center>
+    <h2>Musichoot's Most Liked Playlists</h2>
+</center>
+<br>
+{% for playlist, songs, fav in playlists %}
+    <div class="d-inline-flex p-2 ">
+        <h2 class="">{{ playlist.title }}</h2>
+            <span class=" pl-5 ml-5" id="like_count">
+                <h2>{{ playlist.like_count }}</h2></span>
+            {% if request.user.is_authenticated %}
+                {% if fav %}
+                    <a href="/recommender/playlistlikes/{{ playlist.id }}/F" class="text-decoration-none pt-2 pl-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                        </svg>
+                    </a>
+                {% else %}
+                    <a href="/recommender/playlistlikes/{{ playlist.id }}/T" class="text-decoration-none pt-2 pl-1 ">
+                        <svg width="28" height="28" viewBox="0 0 16 16" class="bi bi-heart" fill="red" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                        </svg>
+                    </a>
+                {% endif %}
+            {% else %}
+            <a href="{% url 'login' %}" class="text-decoration-none pt-2 pl-1">
+                <svg width="28" height="28" viewBox="0 0 16 16" class="bi bi-heart" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+        <br>
+        <table class="table">
+        <tbody>
+        <tr>
+            {% for song, fav in songs %}
+                <td>
+                    <center>
+                    <iframe src="https://open.spotify.com/embed/track/{{ song.id }}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    <br>
+                    <span class="text-white" id="likesong_count">{{ song.like_count }}</span>
+                    {% if request.user.is_authenticated %}
+                        <div class="d-inline-flex">
+
+                        {% if fav %}
+                            <a href="/recommender/likes/{{ song.id }}/F" class="text-decoration-none pt-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                </svg>
+                            </a>
+                        {% else %}
+                            <a href="/recommender/likes/{{ song.id }}/T" class="text-decoration-none pt-2">
+                                <svg width="24" height="24" viewBox="0 0 16 16" class="bi bi-heart" fill="red" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                                </svg>
+                            </a>
+                        {% endif %}
+
+                <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-light pl-5" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <h5 class="text-center"> Select Playlist </h5>
+                        <div class="dropdown-divider"></div>
+                        {% for playlist in userplaylists %}
+                            <a class="dropdown-item text-decoration-none" href="/recommender/playlist/{{ playlist.id }}/{{ album.id }}">{{ playlist.title }}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                        <form method='post' action="/recommender/playlistaddb/{{ album.id }}/">
+                            {% csrf_token %}
+                            <div class="input-group mb-1 p-1">
+                                {{ form2.name }}
+                              <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="submit">Add New</button>
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+            </div>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="text-decoration-none">
+                            <svg width="24" height="24" viewBox="0 0 16 16" class="bi bi-heart" fill="red" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg>
+                        </a>
+                    {% endif %}
+                    </center>
+                </td>
+            {% endfor %}
+        </tr>
+        </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+{% endfor %}
+{% endblock %}

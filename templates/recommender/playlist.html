@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} Playlist {% endblock %}
+
+{% block content %}
+    <h3 class="d-inline">Add Playlist</h3>
+    <br>
+    <form method='post' action="/recommender/playlistb/">
+        {% csrf_token %}
+        {{ form.name }}
+        <button class="btn btn-primary btn-med" type="submit">Add</button>
+
+    </form>
+    <br>
+    <br>
+    <br>
+
+    {% for playlist, songs in playlists %}
+        <div class="d-inline-flex p-2 ">
+            <h2 class="">{{ playlist.title }}</h2>
+            <a href="/recommender/playlistdelete/{{ playlist.id }}" class=" pt-2 pl-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+            </a>
+            {% if playlist.is_public %}
+                <h4 class="pt-2 pl-5 ml-5"> public</h4>
+                <a href="/recommender/playlistpublic/{{ playlist.id}}/F" class="pt-2 pl-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-toggle-on" viewBox="0 0 16 16">
+                      <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                    </svg>
+                </a>
+            {% else %}
+                <h4 class=" pt-2 pl-5 ml-5"> private</h4>
+                <a href="/recommender/playlistpublic/{{ playlist.id}}/T" class=" pt-2 pl-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-toggle-off" viewBox="0 0 16 16">
+                      <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
+                    </svg>
+                </a>
+            {% endif %}
+        </div>
+        <br>
+        <table class="table">
+        <tbody>
+        <tr>
+            {% for song, fav in songs %}
+                <td>
+                    <center>
+                    <iframe src="https://open.spotify.com/embed/track/{{ song.id }}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    <br>
+                    <a href="/recommender/playlistdelete/{{ playlist.id }}/{{ song.id }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" class="bi bi-trash" viewBox="0 0 16 16">
+                          <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                          <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </a>
+                    </center>
+                </td>
+            {% endfor %}
+        </tr>
+        </tbody>
+        </table>
+        <br>
+        <br>
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %} MusicHoot.About {% endblock %}
+
+{% block content %}
+
+    {% load crispy_forms_tags %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Team</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/recommender/about">The Project</a>
+        <a class="navbar-brand" href="/recommender/team">Our Team</a>
+    </nav>
+    <div class="container-fluid bg-light text-dark">
+        <h1><b>Meet Our Team</b></h1>
+        <br/>
+        <div class="row">
+            <div class="card" style="width: 15rem;">
+              <img class="card-img-top" src="../../media/avatar/alex.png" alt="Bitmoji of Alex">
+              <div class="card-body">
+                <h5 class="card-title">Alex Micharski: Project Manager</h5>
+                <p class="card-text">I lead the team through a majority of the project and
+                    did most of the styling.</p>
+                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+              </div>
+            </div>
+            <div class="card" style="width: 15rem;">
+              <img class="card-img-top" src="../../media/avatar/kyle.png" alt="Bitmoji of Kyle">
+              <div class="card-body">
+                <h5 class="card-title">Kyle Flannelly: Back-End Lead</h5>
+                <p class="card-text">I lead the back-end development through a majority of the project.</p>
+                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+              </div>
+            </div>
+            <div class="card" style="width: 15rem;">
+              <img class="card-img-top" src="../../media/avatar/kevin.png" alt="Bitmoji of Kevin">
+              <div class="card-body">
+                <h5 class="card-title">Kevin Connelly: Back-End Developer</h5>
+                <p class="card-text">I worked on the search feature and user profiles.</p>
+                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+              </div>
+            </div>
+            <div class="card" style="width: 15rem;">
+              <img class="card-img-top" src="../../media/avatar/dan.png" alt="Bitmoji of Dan">
+              <div class="card-body">
+                <h5 class="card-title">Dan Manka: Quality Control and Documentation</h5>
+                <p class="card-text">I made sure most of the code was readable and efficient, and
+                    I also did a lot of work on amending the design document.</p>
+                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+              </div>
+            </div>
+            <div class="card" style="width: 15rem;">
+              <img class="card-img-top" src="../../media/avatar/janvi.png" alt="Bitmoji of Janvi">
+              <div class="card-body">
+                <h5 class="card-title">Janvi Patel: Front-End Developer</h5>
+                <p class="card-text">I worked on a lot of the general content pages,
+                    including the home page.</p>
+                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+              </div>
+            </div>
+            <div class="card" style="width: 15rem;">
+              <img class="card-img-top" src="../../media/avatar/rod.png" alt="Bitmoji of Rod">
+              <div class="card-body">
+                <h5 class="card-title">Rod Bourne: Front-End Developer</h5>
+                <p class="card-text">I worked on the front-end for the login and registration as well as
+                    the about page.</p>
+                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+              </div>
+            </div>
+            <div class="card" style="width: 15rem;">
+              <img class="card-img-top" src="../../media/avatar/vincent.png" alt="Bitmoji of Vincent">
+              <div class="card-body">
+                <h5 class="card-title">Vincent Abruscato: Front-End Developer</h5>
+                <p class="card-text">I worked on the front-end improvements to the profile page.</p>
+                <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}
